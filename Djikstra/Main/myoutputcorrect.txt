@@ -1,0 +1,79 @@
+printing before
+printing C
+1->2000 5->900 7->900 11->2000 
+chosen = 5 totalCandidates = 3
+printing C
+1->2000 11->2000 7->900 
+chosen = 7 totalCandidates = 4
+printing C
+1->2000 11->2000 10->2900 0->2900 
+chosen = 8 totalCandidates = 6
+printing C
+1->2000 11->2000 10->2900 0->2900 2->2900 12->2900 
+chosen = 1 totalCandidates = 8
+printing C
+13->3800 11->2000 10->2900 0->2900 2->2900 12->2900 3->3800 9->2700 
+chosen = 11 totalCandidates = 7
+printing C
+13->3800 9->2700 10->2900 0->2900 2->2900 12->2900 3->3800 
+chosen = 9 totalCandidates = 7
+printing C
+13->3800 16->4000 10->2900 0->2900 2->2900 12->2900 3->3800 
+chosen = 10 totalCandidates = 8
+printing C
+13->3800 16->4000 14->4700 0->2900 2->2900 12->2900 3->3800 4->4700 
+chosen = 0 totalCandidates = 8
+printing C
+13->3800 16->4000 14->4700 15->4900 2->2900 12->2900 3->3800 4->4700 
+chosen = 2 totalCandidates = 7
+printing C
+13->3800 16->4000 14->4700 15->4900 4->4700 12->2900 3->3800 
+chosen = 12 totalCandidates = 6
+printing C
+13->3800 16->4000 14->4700 15->4900 4->4700 3->3800 
+chosen = 13 totalCandidates = 6
+printing C
+17->4900 16->4000 14->4700 15->4900 4->4700 3->3800 
+chosen = 3 totalCandidates = 6
+printing C
+17->4900 16->4000 14->4700 15->4900 4->4700 18->5800 
+chosen = 16 totalCandidates = 5
+printing C
+17->4900 18->5800 14->4700 15->4900 4->4700 
+chosen = 14 totalCandidates = 5
+printing C
+17->4900 18->5800 21->6000 15->4900 4->4700 
+chosen = 4 totalCandidates = 5
+printing C
+17->4900 18->5800 21->6000 15->4900 19->6700 
+chosen = 17 totalCandidates = 4
+printing C
+19->6700 18->5800 21->6000 15->4900 
+chosen = 15 totalCandidates = 4
+printing C
+19->6700 18->5800 21->6000 22->6900 
+chosen = 18 totalCandidates = 4
+printing C
+19->6700 20->6900 21->6000 22->6900 
+chosen = 21 totalCandidates = 4
+printing C
+19->6700 20->6900 23->7800 22->6900 
+chosen = 19 totalCandidates = 3
+printing C
+22->6900 20->6900 23->7800 
+chosen = 22 totalCandidates = 3
+printing C
+24->8700 20->6900 23->7800 
+chosen = 20 totalCandidates = 2
+printing C
+24->8700 23->7800 
+chosen = 23 totalCandidates = 1
+printing C
+24->8700 
+chosen = 24 totalCandidates = 0
+printing C
+
+printing determiedn distances
+2900 2000 2900 3800 4700 900 0 900 1800 2700 2900 2000 2900 3800 4700 4900 4000 4900 5800 6700 6900 6000 6900 7800 8700 
+7800
+6 7 8 13 18 23 
