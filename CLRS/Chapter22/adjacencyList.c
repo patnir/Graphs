@@ -3,6 +3,66 @@
 
 #include "linkedList.h"
 
+typedef struct AdjacencyList {
+	int size;
+	LinkedList **lists;
+} AdjacencyList;
+
+void destroyAdjacencyList(AdjacencyList *aList) {
+	int i;
+	fprintf(stdout, "Destroying Adjacency List\n");
+	for (i = 0; i < aList->size; i++) {
+		destroyLinkedList(aList->lists[i]);
+	}
+	free(aList);
+}
+
+void printAdjacencyList(AdjacencyList *aList) {
+	int i;
+	fprintf(stdout, "Printing Adjacency List\n");
+	for (i = 0; i < aList->size; i++) {
+		printLinkedList(aList->lists[i]);
+	}
+}
+
+AdjacencyList *buildAdjacencyList(char *filename) {
+	AdjacencyList *aList = (AdjacencyList *)malloc(sizeof(AdjacencyList));
+
+	FILE *fptr = fopen(filename, "r");
+	if (fptr == NULL) {
+		fprintf(stderr, "Error opening file\n");
+		return NULL;
+	}
+
+	int V;
+	int E;
+
+	fscanf(fptr, "%d\n", &V);
+	fscanf(fptr, "%d\n", &E);
+
+	aList->size = V;
+
+	int i;
+
+	for (i = 0; i < V; i++) {
+		aList->lists[i] = createLinkedList();
+	}
+
+	for (i = 0; i < E; i++) {
+		int v;
+		int e;
+		fscanf(fptr, "%d ", &v);
+		fscanf(fptr, "%d\n", &e);
+
+		pushNode(aList->lists[v], e);
+	}
+
+	fprintf(stdout, "total vertices and edges = %d, %d\n", V, E);
+	fclose(fptr);
+
+	return aList;
+}
+
 void readFile(char *filename) 
 {
 	FILE *fptr = fopen(filename, "r");
@@ -32,7 +92,10 @@ int main(int argc, char **argv)
 
 	char *filename = argv[1];
 
-	readFile(filename);
+	AdjacencyList *aList = buildAdjacencyList(filename);
+	
+	printAdjacencyList(aList);
+	destroyAdjacencyList(aList);
 
 	return EXIT_SUCCESS;
 }

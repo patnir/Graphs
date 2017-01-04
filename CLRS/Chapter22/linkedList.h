@@ -35,7 +35,9 @@ LinkedList *createLinkedList() {
 	return list;
 }
 
-void pushNode(LinkedList *list, Node *node) {
+void pushNode(LinkedList *list, int val) {
+	Node *node = createNode1(val);
+
 	if (list->size == 0) {
 		list->head = node;
 		return;
@@ -78,4 +80,12 @@ void destroyLinkedList(LinkedList *list) {
 
 	free(list);
 	return;
+ }
+
+ void printLinkedList(LinkedList *list) {
+ 	Node *curr = list->head;
+ 	while (curr != NULL) {
+ 		fprintf(stdout, "%d->", curr->value);
+ 	}
+ 	fprintf(stdout, "\\\n");
  }
