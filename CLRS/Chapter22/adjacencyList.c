@@ -27,6 +27,7 @@ void printAdjacencyList(AdjacencyList *aList) {
 
 AdjacencyList *buildAdjacencyList(char *filename) {
 	AdjacencyList *aList = (AdjacencyList *)malloc(sizeof(AdjacencyList));
+	aList->lists = NULL;
 
 	FILE *fptr = fopen(filename, "r");
 	if (fptr == NULL) {
@@ -43,6 +44,8 @@ AdjacencyList *buildAdjacencyList(char *filename) {
 	aList->size = V;
 
 	int i;
+
+	aList->lists = (LinkedList **)malloc(sizeof(LinkedList *) * V);
 
 	for (i = 0; i < V; i++) {
 		aList->lists[i] = createLinkedList();
@@ -94,7 +97,7 @@ int main(int argc, char **argv)
 
 	AdjacencyList *aList = buildAdjacencyList(filename);
 	
-	printAdjacencyList(aList);
+	//printAdjacencyList(aList);
 	destroyAdjacencyList(aList);
 
 	return EXIT_SUCCESS;
