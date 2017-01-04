@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "linkedList.h"
+
 void readFile(char *filename) 
 {
 	FILE *fptr = fopen(filename, "r");
