@@ -66,7 +66,7 @@ void destroyLinkedList(LinkedList *list) {
       // should not access anything in head after we free it
       Node *tmp = list->head->next;
       free(list->head);
-      head = tmp;
+      list->head = tmp;
    }
  }
 
