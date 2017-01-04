@@ -14,6 +14,7 @@ void destroyAdjacencyList(AdjacencyList *aList) {
 	for (i = 0; i < aList->size; i++) {
 		destroyLinkedList(aList->lists[i]);
 	}
+	free(aList->lists);
 	free(aList);
 }
 

@@ -5,10 +5,10 @@ typedef struct Node{
 	struct Node *next;
 } Node;
 
-Node *createNode2(int val, Node *tnext) {
+Node *createNode2(int val, Node *next) {
 	Node *curr = (Node *)malloc(sizeof(Node));
 	curr->value = val;
-	curr->next = tnext;
+	curr->next = next;
 	return curr;
 }
 
@@ -44,7 +44,7 @@ void pushNode(LinkedList *list, int val) {
 	}
 
 	node->next = list->head;
-	list->head->next = node;
+	list->head = node;
 	list->size += 1;
 	return;
 }
@@ -61,25 +61,13 @@ Node *popNode(LinkedList *list) {
 }
 
 void destroyLinkedList(LinkedList *list) {
-	if (list->size == 0) {
-		free(list);
-		return;
-	}
-
-	Node *curr = list->head;
-	list->head = list->head->next;
-	curr->next = NULL;
-
 	while (list->head != NULL) {
-		free(curr);
-
-		curr = list->head;
-		list->head = list->head->next;
-		curr->next = NULL;
-	}
-
-	free(list);
-	return;
+      // whatever we need from head, we have to gather them first
+      // should not access anything in head after we free it
+      Node *tmp = list->head->next;
+      free(list->head);
+      head = tmp;
+   }
  }
 
  void printLinkedList(LinkedList *list) {
