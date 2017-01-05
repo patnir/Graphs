@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "linkedList.h"
+#include "queue.h"
+
 
 typedef struct _Vertex {
 	LinkedList *adjacent;
 	int x, y;
-	unsigned int value;
 	unsigned int distance;
-	unsigned int parent;
+	int parent;
 	short visited;
 } Vertex;
 
@@ -78,6 +80,35 @@ Graph *buildGraph(char *filename) {
 	return G;
 }
 
+void BFS(Graph *G, int start) {
+	int i;
+	for (i = 0; i < G->totalV; i++){
+		G->V[i].distance = INT_MAX;
+		G->V[i].parent = -1;
+		G->V[i].visited = 0;
+	}
+	G->V[start].distance = 0;
+
+
+	return;
+}
+
+void testQueue() {
+	Queue *q = createQueue();
+	int i;
+	for (i = 0; i < 6; i++) {
+		enqueue(q, i);
+		printQueue(q);
+	}
+
+	for (i = 0; i < 6; i++) {
+		dequeue(q);
+		printQueue(q);
+	}
+
+	printQueue(q);
+}
+
 int main(int argc, char **argv) 
 {
 	if (argc != 2) {
@@ -93,8 +124,12 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
+	BFS(G, 0);
+
 	printGraph(G);
 	destroyGraph(G);
 
+
+	testQueue();
 	return EXIT_SUCCESS;
 }
