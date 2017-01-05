@@ -66,11 +66,13 @@ Node *popNode(LinkedList *list) {
 
 void destroyLinkedList(LinkedList *list) {
 	while (list->head != NULL) {
-      Node *tmp = list->head->next;
-      list->head->next = NULL;
-      free(list->head);
-      list->head = tmp;
-   }
+    	Node *tmp = list->head->next;
+    	list->head->next = NULL;
+    	free(list->head);
+		list->head = tmp;
+   	}
+
+   	free(list);
  }
 
  void printLinkedList(LinkedList *list) {
