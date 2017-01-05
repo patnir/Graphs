@@ -34,6 +34,7 @@ AdjacencyList *buildAdjacencyList(char *filename) {
 	FILE *fptr = fopen(filename, "r");
 	if (fptr == NULL) {
 		fprintf(stderr, "Error opening file\n");
+		free(aList);
 		return NULL;
 	}
 
@@ -58,7 +59,6 @@ AdjacencyList *buildAdjacencyList(char *filename) {
 		int e;
 		fscanf(fptr, "%d ", &v);
 		fscanf(fptr, "%d\n", &e);
-		fprintf(stdout, "%d %d\n", v, e);
 		pushNode(aList->lists[v], e);
 	}
 
