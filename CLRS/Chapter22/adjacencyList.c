@@ -108,7 +108,7 @@ int main(int argc, char **argv)
 }
 
 
-void testLinkedLists() {
+/*void testLinkedLists() {
 	LinkedList *list = createLinkedList();
 	//int array[] = {1, 2, 3, 4, 5, 6};
 	int i;
@@ -119,3 +119,4 @@ void testLinkedLists() {
 	printLinkedList(list);
 	destroyLinkedList(list);
 }
+*/

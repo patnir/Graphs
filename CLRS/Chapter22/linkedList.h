@@ -22,6 +22,10 @@ Node *createNode1(int val) {
 	return curr;
 }
 
+void destroyNode(Node *node) {
+	free(node);
+}
+
 // Linked List user-defined data type
 
 typedef struct LinkedList{
@@ -77,6 +81,7 @@ void destroyLinkedList(LinkedList *list) {
 
  void printLinkedList(LinkedList *list) {
  	Node *curr = list->head;
+ 	//fprintf(stdout, "Linked list size: %d\n", list->size);
  	while (curr != NULL) {
  		fprintf(stdout, "%d->", curr->value);
  		curr = curr->next;
