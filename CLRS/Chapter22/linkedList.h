@@ -43,6 +43,7 @@ void pushNode(LinkedList *list, int val) {
 
 	if (list->size == 0) {
 		list->head = node;
+		list->size += 1;
 		return;
 	}
 
@@ -76,6 +77,7 @@ void destroyLinkedList(LinkedList *list) {
  	Node *curr = list->head;
  	while (curr != NULL) {
  		fprintf(stdout, "%d->", curr->value);
+ 		curr = curr->next;
  	}
  	fprintf(stdout, "\\\n");
  }

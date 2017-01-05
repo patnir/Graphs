@@ -22,6 +22,7 @@ void printAdjacencyList(AdjacencyList *aList) {
 	int i;
 	fprintf(stdout, "Printing Adjacency List\n");
 	for (i = 0; i < aList->size; i++) {
+		fprintf(stdout, "%d: ", i);
 		printLinkedList(aList->lists[i]);
 	}
 }
@@ -57,7 +58,7 @@ AdjacencyList *buildAdjacencyList(char *filename) {
 		int e;
 		fscanf(fptr, "%d ", &v);
 		fscanf(fptr, "%d\n", &e);
-
+		fprintf(stdout, "%d %d\n", v, e);
 		pushNode(aList->lists[v], e);
 	}
 
@@ -101,5 +102,20 @@ int main(int argc, char **argv)
 	printAdjacencyList(aList);
 	destroyAdjacencyList(aList);
 
+	//testLinkedLists();
+
 	return EXIT_SUCCESS;
+}
+
+
+void testLinkedLists() {
+	LinkedList *list = createLinkedList();
+	//int array[] = {1, 2, 3, 4, 5, 6};
+	int i;
+	for (i = 0; i < 6; i++) {
+		pushNode(list, i);
+		printLinkedList(list);
+	}
+	printLinkedList(list);
+	destroyLinkedList(list);
 }
