@@ -1,8 +1,8 @@
 // Node user-defined data type
 
-typedef struct Node{
+typedef struct _Node{
 	unsigned int value;
-	struct Node *next;
+	struct _Node *next;
 } Node;
 
 Node *createNode2(int val, Node *next) {
@@ -14,6 +14,9 @@ Node *createNode2(int val, Node *next) {
 
 Node *createNode1(int val) {
 	Node *curr = (Node *)malloc(sizeof(Node));
+	if (curr == NULL) {
+		fprintf(stderr, "Error creating node1\n");
+	}
 	curr->value = val;
 	curr->next = NULL;
 	return curr;
@@ -54,7 +57,7 @@ Node *popNode(LinkedList *list) {
 		return NULL;
 	}
 	Node *ret = list->head;
-	list->head = list->head->next;
+	list->head = ret->next;
 	ret->next = NULL;
 	list->size -= 1;
 	return ret;
@@ -62,9 +65,8 @@ Node *popNode(LinkedList *list) {
 
 void destroyLinkedList(LinkedList *list) {
 	while (list->head != NULL) {
-      // whatever we need from head, we have to gather them first
-      // should not access anything in head after we free it
       Node *tmp = list->head->next;
+      list->head->next = NULL;
       free(list->head);
       list->head = tmp;
    }

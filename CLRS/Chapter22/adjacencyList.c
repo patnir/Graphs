@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
 	AdjacencyList *aList = buildAdjacencyList(filename);
 	
-	//printAdjacencyList(aList);
+	printAdjacencyList(aList);
 	destroyAdjacencyList(aList);
 
 	return EXIT_SUCCESS;
