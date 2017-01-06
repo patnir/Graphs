@@ -47,7 +47,14 @@ void printGraph(Graph *G) {
 	}
 }
 
-Graph *buildGraph(char *filename) {
+Graph *buildGraph(char *filename, int directed) {
+	if (directed == 0) {
+		fprintf(stdout, "Building undirected graph\n");
+	}
+	else {
+		fprintf(stdout, "Building directed graph\n");
+	}
+	
 	Graph *G = (Graph *)malloc(sizeof(Graph));
 	G->V = NULL;
 
@@ -83,6 +90,9 @@ Graph *buildGraph(char *filename) {
 		fscanf(fptr, "%d ", &v);
 		fscanf(fptr, "%d\n", &e);
 		pushNode(G->V[v].adjacent, e);
+		if (directed == 0) {
+			pushNode(G->V[e].adjacent, v);
+		}
 	}
 
 	fclose(fptr);
@@ -164,14 +174,16 @@ void testQueue() {
 
 int main(int argc, char **argv) 
 {
-	if (argc != 2) {
+	if (argc != 3) {
 		fprintf(stderr, "Invalid Arguments\n");
 		return EXIT_FAILURE;
 	}
 
 	char *filename = argv[1];
 
-	Graph *G = buildGraph(filename);
+	int directed = atoi(argv[2]);
+
+	Graph *G = buildGraph(filename, directed);
 
 	if (G == NULL) {
 		return EXIT_FAILURE;
