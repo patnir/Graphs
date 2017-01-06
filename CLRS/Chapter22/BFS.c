@@ -54,7 +54,7 @@ Graph *buildGraph(char *filename, int directed) {
 	else {
 		fprintf(stdout, "Building directed graph\n");
 	}
-	
+
 	Graph *G = (Graph *)malloc(sizeof(Graph));
 	G->V = NULL;
 
@@ -156,28 +156,46 @@ void BFS(Graph *G, unsigned int start) {
 	return;
 }
 
-void testQueue() {
-	Queue *q = createQueue();
-	int i;
-	for (i = 0; i < 6; i++) {
-		enqueue(q, i);
-		printQueue(q);
+void printPath(Graph *G, int start, int end) {
+	fprintf(stdout, "Printing path:\n");
+	if (end == start) {
+		fprintf(stdout, "%d\n", start);
+		return;
 	}
 
-	for (i = 0; i < 6; i++) {
-		dequeue(q);
-		printQueue(q);
+	int *path = (int *)calloc(G->totalV, sizeof(int));
+
+	int i = 0;
+
+	int curr = end;
+
+	while (curr != start && curr != -1 && i < G->totalV) {
+		path[i++] = curr;
+		curr = G->V[curr].parent;
 	}
 
-	printQueue(q);
+	if (curr == -1) {
+		fprintf(stdout, "Path not found\n");
+	} 
+	else {
+		int j;
+		fprintf(stdout, "%d-", curr);
+		for (j = i - 1; j > 0; j--) {
+			fprintf(stdout, "%d-", path[j]);
+		}
+		fprintf(stdout, "%d\n", path[0]);
+		
+	}
+
+	free(path);
 }
 
 int main(int argc, char **argv) 
 {
-	if (argc != 3) {
-		fprintf(stderr, "Invalid Arguments\n");
-		return EXIT_FAILURE;
-	}
+	fprintf(stdout, "%d\n", argc);
+
+	if (argc != 3 && argc != 5) { fprintf(stderr, "Invalid Arguments\n");
+	return EXIT_FAILURE; }
 
 	char *filename = argv[1];
 
@@ -192,9 +210,34 @@ int main(int argc, char **argv)
 	printAdjacencyList(G);
 
 	BFS(G, 0);
+
+	if (argc == 5) {
+		int start = atoi(argv[3]);
+		int end = atoi(argv[4]);
+		printPath(G, start, end);	
+	}
+
 	destroyGraph(G);
 
 
 	//testQueue();
+	
+	
 	return EXIT_SUCCESS;
 }
+
+/*void testQueue() {
+	Queue *q = createQueue();
+	int i;
+	for (i = 0; i < 6; i++) {
+		enqueue(q, i);
+		printQueue(q);
+	}
+
+	for (i = 0; i < 6; i++) {
+		dequeue(q);
+		printQueue(q);
+	}
+
+	printQueue(q);
+}*/
