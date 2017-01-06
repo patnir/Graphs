@@ -68,3 +68,20 @@ void destroyQueue(Queue *q) {
 
    	free(q);
  }
+
+
+void testQueue() {
+	Queue *q = createQueue();
+	int i;
+	for (i = 0; i < 6; i++) {
+		enqueue(q, i);
+		printQueue(q);
+	}
+
+	for (i = 0; i < 6; i++) {
+		dequeue(q);
+		printQueue(q);
+	}
+
+	printQueue(q);
+}

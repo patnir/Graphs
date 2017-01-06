@@ -88,3 +88,15 @@ void destroyLinkedList(LinkedList *list) {
  	}
  	fprintf(stdout, "\\\n");
  }
+
+ void testLinkedLists() {
+	LinkedList *list = createLinkedList();
+	//int array[] = {1, 2, 3, 4, 5, 6};
+	int i;
+	for (i = 0; i < 6; i++) {
+		pushNode(list, i);
+		printLinkedList(list);
+	}
+	printLinkedList(list);
+	destroyLinkedList(list);
+}
