@@ -28,14 +28,15 @@ void enqueue(Queue *q, int val) {
 }
 
 
-void dequeue(Queue *q) {
+int dequeue(Queue *q) {
 	if (q->size == 0) {
-		return;
+		return -1;
 	}
 
 	q->size -= 1;
 
 	Node *tmp = q->head;
+	int temp = tmp->value;
 	q->head = q->head->next;
 	if (q->head == NULL) {
 		q->tail = NULL;
@@ -44,24 +45,7 @@ void dequeue(Queue *q) {
 
 	free(tmp);
 
-	return;
-}
-
-Node *retDequeue(Queue *q) {
-	if (q->size == 0) {
-		return NULL;
-	}
-
-	q->size -= 1;
-
-	Node *tmp = q->head;
-	q->head = q->head->next;
-	if (q->head == NULL) {
-		q->tail = NULL;
-	}
-	tmp->next = NULL;
-
-	return tmp;
+	return temp;
 }
 
 void printQueue(Queue *q) {
@@ -73,3 +57,14 @@ void printQueue(Queue *q) {
  	}
  	fprintf(stdout, "\\\n");
 }
+
+void destroyQueue(Queue *q) {
+	while (q->head != NULL) {
+    	Node *tmp = q->head->next;
+    	q->head->next = NULL;
+    	free(q->head);
+		q->head = tmp;
+   	}
+
+   	free(q);
+ }
