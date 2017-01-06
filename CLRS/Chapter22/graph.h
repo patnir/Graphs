@@ -127,3 +127,12 @@ void printPath(Graph *G, int start, int end) {
 
 	free(path);
 }
+
+
+void printGraph1(Graph *G) {
+	int i;
+	fprintf(stdout, "Printing Graph\n");
+	for(i = 0; i < G->totalV; i++) {
+		fprintf(stdout, "%d: d = %d, p = %d, v = %d\n", i, G->V[i].discovery, G->V[i].parent, G->V[i].color);
+	}
+}
