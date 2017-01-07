@@ -1,3 +1,7 @@
+#define WHITE 0
+#define GRAY 1
+#define BLACK 2
+
 typedef struct _Vertex {
 	LinkedList *adjacent;
 	int x, y;

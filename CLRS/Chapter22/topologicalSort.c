@@ -5,10 +5,6 @@
 #include "linkedList.h"
 #include "graph.h"
 
-#define WHITE 0
-#define GRAY 1
-#define BLACK 2
-
 int time;
 
 void DFS_Visit(Graph *G, int u, LinkedList *sortedList) {
@@ -32,7 +28,7 @@ void DFS_Visit(Graph *G, int u, LinkedList *sortedList) {
 	pushNode(sortedList, u);
 }
 
-void topologicalSort(Graph *G, LinkedList *sortedList) {
+void DFS(Graph *G, LinkedList *sortedList) {
 	int i;
 	for (i = 0; i < G->totalV; i++){
 		G->V[i].parent = -1;
@@ -69,7 +65,7 @@ int main(int argc, char **argv) {
 
 	LinkedList *sortedList = createLinkedList();
 
-	topologicalSort(G, sortedList);
+	DFS(G, sortedList);
 
 	printGraph(G);
 
